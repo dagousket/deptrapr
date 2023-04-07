@@ -4,14 +4,17 @@
 \alias{fetch_dataset}
 \title{fetch_dataset}
 \usage{
-fetch_dataset()
+fetch_dataset(type = c("dino", "penguin"))
+}
+\arguments{
+\item{type}{character Type of dataset to load, can be "dino" or "penguin"}
 }
 \value{
-1
+data.frame A dataset
 }
 \description{
 fetch_dataset
 }
 \examples{
-fetch_dataset()
+data <- fetch_dataset(type = "dino")
 }

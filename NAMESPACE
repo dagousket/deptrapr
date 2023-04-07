@@ -2,4 +2,11 @@
 
 export("%>%")
 export(fetch_dataset)
+import(datasauRus)
+import(palmerpenguins)
+importFrom(dplyr,filter)
+importFrom(dplyr,mutate)
+importFrom(dplyr,sample_n)
+importFrom(dplyr,select)
 importFrom(magrittr,"%>%")
+importFrom(tidyr,drop_na)

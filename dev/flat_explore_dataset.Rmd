@@ -7,38 +7,66 @@ editor_options:
 
 ```{r development, include=FALSE}
 library(testthat)
+library(tidyverse)
 ```
 
-<!--
- You need to run the 'description' chunk in the '0-dev_history.Rmd' file before continuing your code there.
--->
 
 ```{r development-load}
 # Load already included functions if relevant
 pkgload::load_all(export_all = FALSE)
 ```
 
-# fetch_dataset
+# `fetch_dataset()` : load example datasets
+
+This function will load a dataset with two numerical variables, x and y.
 
 ```{r function-fetch_dataset}
 #' fetch_dataset
+#' @param type character Type of dataset to load, can be "dino" or "penguin"
 #'
-#' @return 1
+#' @import datasauRus
+#' @import palmerpenguins
+#' @importFrom dplyr filter select sample_n mutate
+#' @importFrom tidyr drop_na
+#'
+#' @return data.frame A dataset
 #' @export
-#'
-#' @examples
-fetch_dataset <- function() {
-  1
+fetch_dataset <- function(
+    type = c("dino", "penguin")
+    ) {
+  
+  type = match.arg(type)
+  if (isTRUE(type == "dino")) {
+    dataset <- datasauRus::datasaurus_dozen %>%
+      filter(dataset == "dino") %>%
+      select(c(x, y))
+  }
+  else if (isTRUE(type == "penguin")) {
+    dataset <- palmerpenguins::penguins %>%
+      mutate(x = flipper_length_mm,
+             y = body_mass_g) %>%
+      drop_na() %>%
+      sample_n(142) %>%
+      select(c(x, y))
+  }
+  return(dataset)
 }
 ```
 
 ```{r examples-fetch_dataset}
-fetch_dataset()
+data <- fetch_dataset(type = "dino")
 ```
 
 ```{r tests-fetch_dataset}
-test_that("my_fun works", {
+test_that("fetch_dataset works", {
+  expect_s3_class(object = fetch_dataset(type = "dino"),
+                  class = c("tbl_df", "tbl", "data.frame"))
 
+  expect_s3_class(object = fetch_dataset(type = "penguin"),
+                  class = c("tbl_df", "tbl", "data.frame"))
+
+  expect_error(object = fetch_dataset("blabla"),
+               regexp = "'arg' should be one of .dino., .penguin.")
 })
 ```
 
@@ -46,5 +74,5 @@ test_that("my_fun works", {
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop
 # Execute in the console directly
-fusen::inflate(flat_file = "dev/flat_minimal.Rmd", vignette_name = "Explore datasets")
+fusen::inflate(flat_file = "dev/flat_explore_dataset.Rmd", vignette_name = "Explore datasets")
 ```

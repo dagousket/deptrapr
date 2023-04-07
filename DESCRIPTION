@@ -12,7 +12,11 @@ License: MIT + file LICENSE
 URL: https://github.com/dagousket/deptrapr
 BugReports: https://github.com/dagousket/deptrapr/issues
 Imports: 
-    magrittr
+    datasauRus,
+    dplyr,
+    magrittr,
+    palmerpenguins,
+    tidyr
 Suggests: 
     knitr,
     rmarkdown,

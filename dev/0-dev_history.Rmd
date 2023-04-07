@@ -15,11 +15,13 @@ All commands that you use to use when developing packages...
 # Describe your package
 fusen::fill_description(
   pkg = here::here(),
+  overwrite = TRUE,
   fields = list(
     Title = "Explore dependencies pitfalls",
     Description = "Test behavior of the different types of depencies with local and CI check",
     `Authors@R` = c(
-      person(given = "Swann", family = "Floc'hlay", role = "aut", email = "swann@thinkr.fr", comment = c(ORCID = "0000-0003-1477-830X"))
+      person(given = "Swann", family = "Floc'hlay", email = "swann@thinkr.fr", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1477-830X")),
+      person("ThinkR", role = "cph")
     )
   )
 )
@@ -41,14 +43,20 @@ usethis::git_default_branch_rename()
 
 ```{r, eval=FALSE}
 # Install a first time
-remotes::install_local()
+remotes::install_local(force = TRUE)
 # README
 usethis::use_readme_rmd()
 # Code of Conduct
-usethis::use_code_of_conduct("contact@fake.com")
+usethis::use_code_of_conduct("swann@thinkr.fr")
 # NEWS
 usethis::use_news_md()
 ```
+
+```{r}
+# ignore project file
+usethis::use_git_ignore("*.Rproj")
+```
+
 
 **From now, you will need to "inflate" your package at least once to be able to use the following commands. Let's go to your flat template, and come back here later if/when needed.**
 

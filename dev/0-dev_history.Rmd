@@ -81,7 +81,9 @@ fusen::init_share_on_github()
 
 # _Or one step at a time
 # Send your project to a new GitHub project (included in `init_share_on_github()`)
-usethis::use_github()
+usethis::use_github(
+  organisation = NULL,
+  private = TRUE)
 
 # Set Continuous Integration
 # _GitHub (included in `init_share_on_github()`)

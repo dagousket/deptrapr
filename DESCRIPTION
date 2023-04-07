@@ -21,3 +21,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
 Imports: 
     magrittr
+URL: https://github.com/dagousket/deptrapr
+BugReports: https://github.com/dagousket/deptrapr/issues

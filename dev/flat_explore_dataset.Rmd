@@ -1,5 +1,5 @@
 ---
-title: "flat_minimal.Rmd empty"
+title: "flat_explore_dataset.Rmd empty"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -18,25 +18,25 @@ library(testthat)
 pkgload::load_all(export_all = FALSE)
 ```
 
-# my_fun
+# fetch_dataset
 
-```{r function-my_fun}
-#' my_fun Title
+```{r function-fetch_dataset}
+#' fetch_dataset
 #'
 #' @return 1
 #' @export
 #'
 #' @examples
-my_fun <- function() {
+fetch_dataset <- function() {
   1
 }
 ```
 
-```{r examples-my_fun}
-my_fun()
+```{r examples-fetch_dataset}
+fetch_dataset()
 ```
 
-```{r tests-my_fun}
+```{r tests-fetch_dataset}
 test_that("my_fun works", {
 
 })
@@ -46,5 +46,5 @@ test_that("my_fun works", {
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop
 # Execute in the console directly
-fusen::inflate(flat_file = "dev/flat_minimal.Rmd", vignette_name = "Minimal")
+fusen::inflate(flat_file = "dev/flat_minimal.Rmd", vignette_name = "Explore datasets")
 ```

@@ -1,15 +1,23 @@
 Package: deptrapr
-Version: 0.0.0.9000
 Title: Explore Dependencies Pitfalls
-Description: Test behavior of the different types of depencies with local and CI check.
-Authors@R: c(person(given = "Swann",
-         family = "Floc'hlay",
-         role = c("aut", "cre"),
-         email = "swann@thinkr.fr",
-         comment = c(ORCID = "0000-0003-1477-830X")),
-  person(given = "ThinkR",
-         role = "cph"))
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Swann", "Floc'hlay", , "swann@thinkr.fr", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-1477-830X")),
+    person("ThinkR", role = "cph")
+  )
+Description: Test behavior of the different types of depencies with local
+    and CI check.
 License: MIT + file LICENSE
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: 
+    knitr
+Config/fusen/version: 0.5.0.9000
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.0
+Imports: 
+    magrittr

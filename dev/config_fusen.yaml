@@ -1,0 +1,6 @@
+flat_minimal.Rmd:
+  path: dev/flat_minimal.Rmd
+  state: active
+  R: R/fetch_dataset.R
+  tests: tests/testthat/test-fetch_dataset.R
+  vignettes: vignettes/explore-datasets.Rmd

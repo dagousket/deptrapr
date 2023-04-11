@@ -1,0 +1,107 @@
+---
+title: "flat_regress_dataset.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+library(stats)
+library(broom)
+library(readr)
+library(DT)
+library(knitr)
+library(kableExtra)
+library(sjPlot)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# `regress_dataset()` : Make a linear regression on the dataset
+
+```{r function-regress_dataset}
+#' regress_dataset
+#' 
+#' @param data data.frame The dataset to perform regression on, must have "x" and "y" numerical column
+#' @param view_type character The type of output to view result, can be "sjTable" or "kable"
+#' @param save_output logical Save the linear regression output to file
+#' @param path character Path to the saved output file
+#' 
+#' @importFrom stats lm
+#' @importFrom sjPlot tab_model
+#' @importFrom DT datatable
+#' @importFrom knitr kable
+#' @importFrom kableExtra kable_styling
+#' @importFrom broom tidy
+#' @importFrom readr write_rds
+#'
+#' @return
+#' @export
+regress_dataset <- function(data, view_type = c("sjTable","kableExtra","DT"), save_output = TRUE, path = "lm_params.rds") {
+  
+  view_type = match.arg(view_type)
+  
+  # perform linear regression
+  reg <- lm(data = data)
+
+  # save
+  if (isTRUE(save_output)) {
+    write_rds(x = tidy(reg), file = path)
+  }
+
+  # show
+  if (view_type == "DT") {
+    reg <- reg %>% tidy() %>% datatable()
+  } else if (view_type == "kableExtra") {
+    reg <- reg %>% tidy() %>% kable() %>% kable_styling("striped", position = "left", font_size = 7)
+  } else if (view_type == "sjTable") {
+    reg <- reg %>% tab_model()
+  }
+  
+  return(reg)
+}
+```
+
+```{r examples-regress_dataset}
+data <- fetch_dataset(type = "dino")
+reg <- regress_dataset(data = data, view_type = "sjTable", save_output = FALSE)
+reg
+```
+
+```{r tests-regress_dataset}
+test_that("regress_dataset works", {
+  data <- fetch_dataset(type = "dino")
+  tmp_out <- paste0(tempfile(pattern = "lm"), ".rds")
+  
+  reg_dt <- regress_dataset(data = data, view_type = "DT", save_output = FALSE)
+  reg_sj <- regress_dataset(data = data, view_type = "sjTable", save_output = FALSE)
+  reg_kb <- regress_dataset(data = data, view_type = "kableExtra", save_output = TRUE, path = tmp_out)
+  
+  expect_s3_class(object = reg_dt,
+                  class = c("datatables", "htmlwidget")
+                  )
+
+  expect_s3_class(object = reg_sj,
+                  class = "sjTable"
+                  )
+  
+  expect_s3_class(object = reg_kb,
+                  class = c("kableExtra", "knitr_kable")
+                  )
+  
+  expect_true(file.exists(tmp_out))
+  unlink(tmp_out)
+})
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_regress_dataset.Rmd", vignette_name = "Regress dataset", check = FALSE)
+```
+

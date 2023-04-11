@@ -8,6 +8,11 @@ editor_options:
 ```{r development, include=FALSE}
 library(testthat)
 library(tidyverse)
+library(datasauRus)
+library(palmerpenguins)
+library(knitr)
+library(kableExtra)
+library(skimr)
 ```
 
 
@@ -28,6 +33,7 @@ This function will load a dataset with two numerical variables, x and y.
 #' @import palmerpenguins
 #' @importFrom dplyr filter select sample_n mutate
 #' @importFrom tidyr drop_na
+#' @importFrom glue glue
 #'
 #' @return data.frame A dataset
 #' @export
@@ -40,6 +46,7 @@ fetch_dataset <- function(
     dataset <- datasauRus::datasaurus_dozen %>%
       filter(dataset == "dino") %>%
       select(c(x, y))
+    message(glue("Loading {type} dataset"))
   }
   else if (isTRUE(type == "penguin")) {
     dataset <- palmerpenguins::penguins %>%
@@ -48,6 +55,7 @@ fetch_dataset <- function(
       drop_na() %>%
       sample_n(142) %>%
       select(c(x, y))
+    message(glue("Loading {type} dataset"))
   }
   return(dataset)
 }
@@ -70,9 +78,54 @@ test_that("fetch_dataset works", {
 })
 ```
 
+# `show_data()` : Take a quick look at the dataset
+    
+```{r function-show_data}
+#' show_data
+#' 
+#' @param data data.frame The dataset to show
+#' @param view_type character Type of view, show the first rows with "head" or global summary with "skim"
+#' 
+#' @importFrom knitr kable
+#' @importFrom kableExtra kable_styling
+#' @importFrom skimr skim
+#' @importFrom utils head
+#' 
+#' @return knitre_kable View the dataset
+#' 
+#' @export
+show_data <- function(data, view_type = c("head", "skim")){
+  
+  view_type = match.arg(view_type)
+  
+  if (view_type == "head"){
+    selected_view <- data %>% head() %>% kable() %>% kable_styling("striped", position = "left", font_size = 7)
+  } else if (view_type == "skim"){
+    selected_view <- skim(data) %>% kable() %>% kable_styling("striped", position = "left", font_size = 7)
+  }
+  
+  return(selected_view)
+}
+```
+  
+```{r example-show_data}
+data <- fetch_dataset(type = "dino")
+show_data(data = data, view = "skim")
+```
+  
+```{r tests-show_data}
+test_that("show_data works", {
+  data <- fetch_dataset(type = "dino")
+  output <- show_data(data = data, view = "skim")
+  expect_s3_class(object = output,
+                  class = c("kableExtra", "knitr_kable")
+                  )
+})
+```
+
 
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop
 # Execute in the console directly
-fusen::inflate(flat_file = "dev/flat_explore_dataset.Rmd", vignette_name = "Explore datasets")
+fusen::inflate(flat_file = "dev/flat_explore_dataset.Rmd", vignette_name = "Explore datasets", check = FALSE)
 ```

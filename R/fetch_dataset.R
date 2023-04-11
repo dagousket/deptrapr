@@ -7,6 +7,7 @@
 #' @import palmerpenguins
 #' @importFrom dplyr filter select sample_n mutate
 #' @importFrom tidyr drop_na
+#' @importFrom glue glue
 #'
 #' @return data.frame A dataset
 #' @export
@@ -21,6 +22,7 @@ fetch_dataset <- function(
     dataset <- datasauRus::datasaurus_dozen %>%
       filter(dataset == "dino") %>%
       select(c(x, y))
+    message(glue("Loading {type} dataset"))
   }
   else if (isTRUE(type == "penguin")) {
     dataset <- palmerpenguins::penguins %>%
@@ -29,6 +31,7 @@ fetch_dataset <- function(
       drop_na() %>%
       sample_n(142) %>%
       select(c(x, y))
+    message(glue("Loading {type} dataset"))
   }
   return(dataset)
 }

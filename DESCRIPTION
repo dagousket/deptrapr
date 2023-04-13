@@ -12,9 +12,25 @@ License: MIT + file LICENSE
 URL: https://github.com/dagousket/deptrapr
 BugReports: https://github.com/dagousket/deptrapr/issues
 Imports: 
-    magrittr
-Suggests: 
+    broom,
+    datasauRus,
+    dplyr,
+    DT,
+    ggplot2,
+    ggthemes,
+    glue,
+    kableExtra,
     knitr,
+    magrittr,
+    palmerpenguins,
+    plotly,
+    readr,
+    sjPlot,
+    skimr,
+    stats,
+    tidyr,
+    utils
+Suggests: 
     rmarkdown,
     testthat
 VignetteBuilder: 

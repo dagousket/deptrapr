@@ -1,6 +1,22 @@
-flat_minimal.Rmd:
-  path: dev/flat_minimal.Rmd
+flat_explore_dataset.Rmd:
+  path: dev/flat_explore_dataset.Rmd
   state: active
-  R: R/fetch_dataset.R
-  tests: tests/testthat/test-fetch_dataset.R
+  R:
+  - R/fetch_dataset.R
+  - R/show_data.R
+  tests:
+  - tests/testthat/test-fetch_dataset.R
+  - tests/testthat/test-show_data.R
   vignettes: vignettes/explore-datasets.Rmd
+flat_plot_dataset.Rmd:
+  path: dev/flat_plot_dataset.Rmd
+  state: active
+  R: R/plot_dataset.R
+  tests: tests/testthat/test-plot_dataset.R
+  vignettes: vignettes/show-dataset.Rmd
+flat_regress_dataset.Rmd:
+  path: dev/flat_regress_dataset.Rmd
+  state: active
+  R: R/regress_dataset.R
+  tests: tests/testthat/test-regress_dataset.R
+  vignettes: vignettes/regress-dataset.Rmd

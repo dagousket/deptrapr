@@ -19,6 +19,12 @@
     <loc>/articles/index.html</loc>
   </url>
   <url>
+    <loc>/articles/regress-dataset.html</loc>
+  </url>
+  <url>
+    <loc>/articles/show-dataset.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -38,5 +44,14 @@
   </url>
   <url>
     <loc>/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>/reference/plot_dataset.html</loc>
+  </url>
+  <url>
+    <loc>/reference/regress_dataset.html</loc>
+  </url>
+  <url>
+    <loc>/reference/show_data.html</loc>
   </url>
 </urlset>

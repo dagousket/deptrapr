@@ -8,6 +8,12 @@ flat_explore_dataset.Rmd:
   - tests/testthat/test-fetch_dataset.R
   - tests/testthat/test-show_data.R
   vignettes: vignettes/explore-datasets.Rmd
+flat_plot_dataset.Rmd:
+  path: dev/flat_plot_dataset.Rmd
+  state: active
+  R: R/plot_dataset.R
+  tests: tests/testthat/test-plot_dataset.R
+  vignettes: vignettes/show-dataset.Rmd
 flat_regress_dataset.Rmd:
   path: dev/flat_regress_dataset.Rmd
   state: active

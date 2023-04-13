@@ -39,7 +39,7 @@ pkgload::load_all(export_all = FALSE)
 #' @importFrom broom tidy
 #' @importFrom readr write_rds
 #'
-#' @return
+#' @return table The summarised regression info
 #' @export
 regress_dataset <- function(data, view_type = c("sjTable","kableExtra","DT"), save_output = TRUE, path = "lm_params.rds") {
   

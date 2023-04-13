@@ -20,6 +20,9 @@ regress_dataset(
 
 \item{path}{character Path to the saved output file}
 }
+\value{
+table The summarised regression info
+}
 \description{
 regress_dataset
 }

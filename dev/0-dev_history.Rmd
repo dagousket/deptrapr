@@ -110,6 +110,7 @@ checkhelper::check_as_cran()
 # Add a new flat template
 fusen::add_flat_template("add")
 fusen::add_additional(flat_name = "regress_dataset")
+fusen::add_additional(flat_name = "plot_dataset")
 ```
 
 # Share the package

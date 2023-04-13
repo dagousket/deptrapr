@@ -1,0 +1,84 @@
+---
+title: "flat_plot_dataset.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# `plot_dataset()` : show dataset as graphic
+
+```{r function-plot_dataset}
+#' plot_dataset
+#'
+#' @param data data.frame The data to plot, must have x and y numeric columns
+#' @param type character The type of graph to return, either "plotly" or "ggplot"
+#' 
+#' @importFrom ggplot2 ggplot aes geom_point
+#' @importFrom plotly plot_ly
+#' @importFrom ggthemes theme_pander
+#' 
+#' @return ggplot
+#' @export
+plot_dataset <- function(data,
+                         type = c("ggplot", "plotly")) {
+  # get type
+  type <- match.arg(type)
+  
+  # make plot
+  if (type == "ggplot") {
+    p <- ggplot(data, aes(x = x, y = y)) +
+      geom_point(size = 3) +
+      theme_pander()
+    
+  } else if (type == "plotly") {
+    p <- plot_ly(
+      data,
+      x = ~ x,
+      y = ~ y,
+      type = "scatter",
+      mode   = 'markers',
+      marker = list(size = 10)
+    )
+  }
+  
+  return(p)
+}
+```
+
+```{r examples-plot_dataset}
+data <- fetch_dataset(type = "dino")
+p <- plot_dataset(data)
+p
+```
+
+```{r tests-plot_dataset}
+test_that("plot_dataset works", {
+  # load data
+  data <- fetch_dataset(type = "dino")
+
+  # test ggplot
+  p <- plot_dataset(data, type = "ggplot")
+  expect_s3_class(p, c("gg", "ggplot"))
+  # test plotly
+  p <- plot_dataset(data, type = "plotly")
+  expect_s3_class(p, c("plotly", "htmlwidget"))
+  
+  })
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_plot_dataset.Rmd", vignette_name = "Show dataset", check = FALSE)
+```
+

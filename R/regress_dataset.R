@@ -15,7 +15,7 @@
 #' @importFrom broom tidy
 #' @importFrom readr write_rds
 #'
-#' @return
+#' @return table The summarised regression info
 #' @export
 #' @examples
 #' data <- fetch_dataset(type = "dino")

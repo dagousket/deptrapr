@@ -31,3 +31,20 @@ p <- plot_dataset(data,
 p
 ```
 
+# `save_plot()` : save graphic in chosen formats
+
+  
+
+```{r example-save_plot}
+#' \dontrun{
+save_plot(plot = p,
+          filename = "dino")
+#' }
+```
+
+  
+
+  
+
+
+

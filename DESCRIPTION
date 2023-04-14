@@ -25,6 +25,7 @@ Imports:
     palmerpenguins,
     plotly,
     readr,
+    RSkittleBrewer (>= 1.1),
     sjPlot,
     skimr,
     stats,
@@ -35,6 +36,8 @@ Suggests:
     testthat
 VignetteBuilder: 
     knitr
+Remotes: 
+    alyssafrazee/RSkittleBrewer
 Config/fusen/version: 0.5.0.9000
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

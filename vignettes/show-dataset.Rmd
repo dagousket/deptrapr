@@ -24,7 +24,10 @@ library(deptrapr)
 
 ```{r examples-plot_dataset}
 data <- fetch_dataset(type = "dino")
-p <- plot_dataset(data)
+p <- plot_dataset(data,
+                  type = "ggplot",
+                  smarties = TRUE,
+                  title = "My smarties dino")
 p
 ```
 

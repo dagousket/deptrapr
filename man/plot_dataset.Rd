@@ -4,12 +4,16 @@
 \alias{plot_dataset}
 \title{plot_dataset}
 \usage{
-plot_dataset(data, type = c("ggplot", "plotly"))
+plot_dataset(data, type = c("ggplot", "plotly"), smarties = FALSE, title = "")
 }
 \arguments{
 \item{data}{data.frame The data to plot, must have x and y numeric columns}
 
 \item{type}{character The type of graph to return, either "plotly" or "ggplot"}
+
+\item{smarties}{logical Should the plot have some candy flavour}
+
+\item{title}{character Plot title}
 }
 \value{
 ggplot
@@ -19,6 +23,9 @@ plot_dataset
 }
 \examples{
 data <- fetch_dataset(type = "dino")
-p <- plot_dataset(data)
+p <- plot_dataset(data,
+                  type = "ggplot",
+                  smarties = TRUE,
+                  title = "My smarties dino")
 p
 }

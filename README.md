@@ -1,31 +1,33 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# deptrapr
+# deptrapr <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/dagousket/deptrapr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dagousket/deptrapr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of deptrapr is to …
-
-## Installation
-
-You can install the development version of deptrapr like so:
-
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
+The goal of `{deptrapr}` is to show how managing package dependencies
+may lead to CI failures.
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to plot a dino in smarties
+color :
 
 ``` r
 library(deptrapr)
-## basic example code
+data <- fetch_dataset(type = "dino")
+#> Loading dino dataset
+p <- plot_dataset(data,
+                  type = "ggplot",
+                  smarties = TRUE,
+                  title = "My smarties dino")
+p
 ```
+
+<img src="man/figures/README-example-1.png" width="100%" />
 
 ## Code of Conduct
 

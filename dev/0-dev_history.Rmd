@@ -55,6 +55,9 @@ usethis::use_news_md()
 ```{r}
 # ignore project file
 usethis::use_git_ignore("*.Rproj")
+
+# add github link in description
+usethis::use_dev_package(package = "RSkittleBrewer", type = "Imports", remote = "alyssafrazee/RSkittleBrewer")
 ```
 
 

@@ -4,28 +4,53 @@
 #'
 #' @param data data.frame The data to plot, must have x and y numeric columns
 #' @param type character The type of graph to return, either "plotly" or "ggplot"
+#' @param smarties logical Should the plot have some candy flavour
+#' @param title character Plot title
 #' 
-#' @importFrom ggplot2 ggplot aes geom_point
+#' @importFrom ggplot2 ggplot aes geom_point theme_void labs
 #' @importFrom plotly plot_ly
 #' @importFrom ggthemes theme_pander
+#' @importFrom RSkittleBrewer RSkittleBrewer
 #' 
 #' @return ggplot
 #' @export
 #' @examples
 #' data <- fetch_dataset(type = "dino")
-#' p <- plot_dataset(data)
+#' p <- plot_dataset(data,
+#'                   type = "ggplot",
+#'                   smarties = TRUE,
+#'                   title = "My smarties dino")
 #' p
 plot_dataset <- function(data,
-                         type = c("ggplot", "plotly")) {
+                         type = c("ggplot", "plotly"),
+                         smarties = FALSE,
+                         title = "") {
   # get type
   type <- match.arg(type)
   
   # make plot
   if (type == "ggplot") {
     p <- ggplot(data, aes(x = x, y = y)) +
-      geom_point(size = 3) +
-      theme_pander()
+      labs(x = "x", y = "y", title = title)
     
+    if (isTRUE(smarties)){
+      p <- p +
+        geom_point(
+          size = 3,
+          colour = sample(
+            RSkittleBrewer(flavor = "smarties"),
+            dim(data)[1],
+            replace = TRUE
+            )
+          ) +
+        theme_void()
+      
+    } else {
+      p <- p +
+        geom_point(size = 3) +
+        theme_pander()
+    }
+
   } else if (type == "plotly") {
     p <- plot_ly(
       data,

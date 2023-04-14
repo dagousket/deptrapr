@@ -6,6 +6,8 @@
 \alias{deptrapr-package}
 \title{deptrapr: Explore Dependencies Pitfalls}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Test behavior of the different types of depencies with local and CI check.
 }
 \seealso{

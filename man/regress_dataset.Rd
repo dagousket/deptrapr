@@ -6,7 +6,7 @@
 \usage{
 regress_dataset(
   data,
-  view_type = c("sjTable", "kableExtra", "DT"),
+  view_type = c("sjTable", "kable", "DT"),
   save_output = TRUE,
   path = "lm_params.rds"
 )
@@ -14,7 +14,7 @@ regress_dataset(
 \arguments{
 \item{data}{data.frame The dataset to perform regression on, must have "x" and "y" numerical column}
 
-\item{view_type}{character The type of output to view result, can be "sjTable" or "kable"}
+\item{view_type}{character The type of output to view result, can be "sjTable", "DT" or "kable"}
 
 \item{save_output}{logical Save the linear regression output to file}
 

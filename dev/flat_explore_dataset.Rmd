@@ -11,8 +11,8 @@ library(tidyverse)
 library(datasauRus)
 library(palmerpenguins)
 library(knitr)
-library(kableExtra)
 library(skimr)
+library(glue)
 ```
 
 
@@ -87,7 +87,6 @@ test_that("fetch_dataset works", {
 #' @param view_type character Type of view, show the first rows with "head" or global summary with "skim"
 #' 
 #' @importFrom knitr kable
-#' @importFrom kableExtra kable_styling
 #' @importFrom skimr skim
 #' @importFrom utils head
 #' 
@@ -99,9 +98,9 @@ show_data <- function(data, view_type = c("head", "skim")){
   view_type = match.arg(view_type)
   
   if (view_type == "head"){
-    selected_view <- data %>% head() %>% kable() %>% kable_styling("striped", position = "left", font_size = 7)
+    selected_view <- data %>% head() %>% kable()
   } else if (view_type == "skim"){
-    selected_view <- skim(data) %>% kable() %>% kable_styling("striped", position = "left", font_size = 7)
+    selected_view <- skim(data) %>% kable()
   }
   
   return(selected_view)
@@ -118,7 +117,7 @@ test_that("show_data works", {
   data <- fetch_dataset(type = "dino")
   output <- show_data(data = data, view = "skim")
   expect_s3_class(object = output,
-                  class = c("kableExtra", "knitr_kable")
+                  class = c("knitr_kable")
                   )
 })
 ```

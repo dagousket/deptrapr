@@ -25,13 +25,13 @@ The goal of `{deptrapr}` is to show how managing package dependencies may lead t
 
 This is a basic example which shows you how to plot a dino in smarties color :
 
-```{r example}
+```{r example, dpi=300}
 library(deptrapr)
 data <- fetch_dataset(type = "dino")
 p <- plot_dataset(data,
                   type = "ggplot",
-                  smarties = TRUE,
-                  title = "My smarties dino")
+                  candy = TRUE,
+                  title = "The Candynosaurus Rex")
 p
 ```
 

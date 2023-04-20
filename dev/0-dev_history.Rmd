@@ -58,6 +58,7 @@ usethis::use_git_ignore("*.Rproj")
 
 # add github link in description
 usethis::use_dev_package(package = "RSkittleBrewer", type = "Imports", remote = "alyssafrazee/RSkittleBrewer")
+usethis::use_dev_package(package = "emo", type = "Imports", remote = "hadley/emo")
 ```
 
 

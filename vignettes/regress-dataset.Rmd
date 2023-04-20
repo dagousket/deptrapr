@@ -24,7 +24,7 @@ library(deptrapr)
 
 ```{r examples-regress_dataset}
 data <- fetch_dataset(type = "dino")
-reg <- regress_dataset(data = data, view_type = "sjTable", save_output = FALSE)
+reg <- regress_dataset(data = data, view_type = "sjTable")
 reg
 ```
 

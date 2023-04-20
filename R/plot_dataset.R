@@ -4,13 +4,15 @@
 #'
 #' @param data data.frame The data to plot, must have x and y numeric columns
 #' @param type character The type of graph to return, either "plotly" or "ggplot"
-#' @param smarties logical Should the plot have some candy flavour
+#' @param candy logical Should the plot have some candy flavour added
 #' @param title character Plot title
 #' 
-#' @importFrom ggplot2 ggplot aes geom_point theme_void labs
+#' @importFrom ggplot2 ggplot aes geom_point theme_void labs annotation_raster
 #' @importFrom plotly plot_ly
 #' @importFrom ggthemes theme_pander
 #' @importFrom RSkittleBrewer RSkittleBrewer
+#' @importFrom stringr str_to_title
+#' @importFrom png readPNG
 #' 
 #' @return ggplot
 #' @export
@@ -18,12 +20,12 @@
 #' data <- fetch_dataset(type = "dino")
 #' p <- plot_dataset(data,
 #'                   type = "ggplot",
-#'                   smarties = TRUE,
-#'                   title = "My smarties dino")
+#'                   candy = TRUE,
+#'                   title = "A candynosaurus")
 #' p
 plot_dataset <- function(data,
                          type = c("ggplot", "plotly"),
-                         smarties = FALSE,
+                         candy = FALSE,
                          title = "") {
   # get type
   type <- match.arg(type)
@@ -31,20 +33,22 @@ plot_dataset <- function(data,
   # make plot
   if (type == "ggplot") {
     p <- ggplot(data, aes(x = x, y = y)) +
-      labs(x = "x", y = "y", title = title)
+      labs(x = "x", y = "y", title = str_to_title(title))
     
-    if (isTRUE(smarties)){
+    if (isTRUE(candy)){
+      mypng <- readPNG(system.file("icecream.png", package = "deptrapr"))
       p <- p +
+        annotation_raster(mypng, ymin = 0, ymax= 40, xmin = 40, xmax = 60) +
         geom_point(
           size = 3,
           colour = sample(
             RSkittleBrewer(flavor = "smarties"),
             dim(data)[1],
             replace = TRUE
-            )
-          ) +
-        theme_void()
-      
+          )
+        ) +
+        theme_void() +
+        labs(title = title)
     } else {
       p <- p +
         geom_point(size = 3) +

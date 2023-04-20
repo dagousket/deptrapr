@@ -4,6 +4,7 @@
 #' 
 #' @param data data.frame The dataset to perform regression on, must have "x" and "y" numerical column
 #' @param view_type character The type of output to view result, can be "sjTable", "DT" or "kable"
+#' @param save logical Whether output should be saved
 #' @param path character Path to the saved output file
 #' 
 #' @importFrom stats lm
@@ -13,15 +14,14 @@
 #' @importFrom broom tidy
 #' @importFrom readr write_rds
 #' @importFrom glue glue
-#' @importFrom yesno yesno
 #'
 #' @return table The summarised regression info
 #' @export
 #' @examples
-#' data <- fetch_dataset(type = "dino")
+#' data <- fetch_dataset(type = "penguin")
 #' reg <- regress_dataset(data = data, view_type = "sjTable")
 #' reg
-regress_dataset <- function(data, view_type = c("sjTable","kable","DT"), path = "lm_params.rds") {
+regress_dataset <- function(data, view_type = c("sjTable","kable","DT"), save = FALSE, path = "lm_params.rds") {
   
   view_type = match.arg(view_type)
   
@@ -29,12 +29,9 @@ regress_dataset <- function(data, view_type = c("sjTable","kable","DT"), path = 
   reg <- lm(data = data)
 
   # save
-  if (isTRUE(interactive())) {
-    user_answer <- yesno("Do you want the regression results to be saved ?")
-    if (isTRUE(user_answer)) {
-      message(glue("Saving output in {path}"))
-      write_rds(x = tidy(reg), file = path)
-    }
+  if (isTRUE(save)) {
+    message(glue("Saving output in {path}"))
+    write_rds(x = tidy(reg), file = path)
   }
   
   # show

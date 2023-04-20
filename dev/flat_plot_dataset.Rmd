@@ -57,8 +57,7 @@ plot_dataset <- function(data,
             replace = TRUE
           )
         ) +
-        theme_void() +
-        labs(title = title)
+        theme_void()
     } else {
       p <- p +
         geom_point(size = 3) +
@@ -103,7 +102,6 @@ test_that("plot_dataset works", {
   
   })
 ```
-
 
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop

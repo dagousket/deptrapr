@@ -28,6 +28,7 @@ pkgload::load_all(export_all = FALSE)
 #' 
 #' @param data data.frame The dataset to perform regression on, must have "x" and "y" numerical column
 #' @param view_type character The type of output to view result, can be "sjTable", "DT" or "kable"
+#' @param save logical Whether output should be saved
 #' @param path character Path to the saved output file
 #' 
 #' @importFrom stats lm
@@ -37,11 +38,10 @@ pkgload::load_all(export_all = FALSE)
 #' @importFrom broom tidy
 #' @importFrom readr write_rds
 #' @importFrom glue glue
-#' @importFrom yesno yesno
 #'
 #' @return table The summarised regression info
 #' @export
-regress_dataset <- function(data, view_type = c("sjTable","kable","DT"), path = "lm_params.rds") {
+regress_dataset <- function(data, view_type = c("sjTable","kable","DT"), save = FALSE, path = "lm_params.rds") {
   
   view_type = match.arg(view_type)
   
@@ -49,12 +49,9 @@ regress_dataset <- function(data, view_type = c("sjTable","kable","DT"), path = 
   reg <- lm(data = data)
 
   # save
-  if (isTRUE(interactive())) {
-    user_answer <- yesno("Do you want the regression results to be saved ?")
-    if (isTRUE(user_answer)) {
-      message(glue("Saving output in {path}"))
-      write_rds(x = tidy(reg), file = path)
-    }
+  if (isTRUE(save)) {
+    message(glue("Saving output in {path}"))
+    write_rds(x = tidy(reg), file = path)
   }
   
   # show
@@ -71,18 +68,21 @@ regress_dataset <- function(data, view_type = c("sjTable","kable","DT"), path = 
 ```
 
 ```{r examples-regress_dataset}
-data <- fetch_dataset(type = "dino")
+data <- fetch_dataset(type = "penguin")
 reg <- regress_dataset(data = data, view_type = "sjTable")
 reg
 ```
 
 ```{r tests-regress_dataset}
 test_that("regress_dataset works", {
-  data <- fetch_dataset(type = "dino")
+  tmp_output <- tempfile(pattern = "regression")
+  dir.create(tmp_output)
+  
+  data <- fetch_dataset(type = "penguin")
   
   reg_dt <- regress_dataset(data = data, view_type = "DT")
   reg_sj <- regress_dataset(data = data, view_type = "sjTable")
-  reg_kb <- regress_dataset(data = data, view_type = "kable")
+  reg_kb <- regress_dataset(data = data, view_type = "kable", save = TRUE, path = file.path(tmp_output, "lm_params.rds"))
   
   expect_s3_class(object = reg_dt,
                   class = c("datatables", "htmlwidget")
@@ -95,6 +95,9 @@ test_that("regress_dataset works", {
   expect_s3_class(object = reg_kb,
                   class = c("knitr_kable")
                   )
+  
+  expect_true(file.exists(file.path(tmp_output, "lm_params.rds")))
+  unlink(tmp_output, recursive = TRUE)
 
 })
 ```

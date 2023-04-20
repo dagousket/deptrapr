@@ -47,8 +47,7 @@ plot_dataset <- function(data,
             replace = TRUE
           )
         ) +
-        theme_void() +
-        labs(title = title)
+        theme_void()
     } else {
       p <- p +
         geom_point(size = 3) +

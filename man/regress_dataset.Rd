@@ -7,6 +7,7 @@
 regress_dataset(
   data,
   view_type = c("sjTable", "kable", "DT"),
+  save = FALSE,
   path = "lm_params.rds"
 )
 }
@@ -14,6 +15,8 @@ regress_dataset(
 \item{data}{data.frame The dataset to perform regression on, must have "x" and "y" numerical column}
 
 \item{view_type}{character The type of output to view result, can be "sjTable", "DT" or "kable"}
+
+\item{save}{logical Whether output should be saved}
 
 \item{path}{character Path to the saved output file}
 }
@@ -24,7 +27,7 @@ table The summarised regression info
 regress_dataset
 }
 \examples{
-data <- fetch_dataset(type = "dino")
+data <- fetch_dataset(type = "penguin")
 reg <- regress_dataset(data = data, view_type = "sjTable")
 reg
 }

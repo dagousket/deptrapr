@@ -23,7 +23,7 @@ library(deptrapr)
 # `regress_dataset()` : Make a linear regression on the dataset
 
 ```{r examples-regress_dataset}
-data <- fetch_dataset(type = "dino")
+data <- fetch_dataset(type = "penguin")
 reg <- regress_dataset(data = data, view_type = "sjTable")
 reg
 ```

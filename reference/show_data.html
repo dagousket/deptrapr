@@ -92,56 +92,14 @@
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="fetch_dataset.html">fetch_dataset</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"dino"</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading dino dataset</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Loading dino dataset</span>
 <span class="r-in"><span><span class="fu">show_data</span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, view <span class="op">=</span> <span class="st">"skim"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;table class="table table-striped" style="font-size: 7px; "&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;thead&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:left;"&gt; skim_type &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:left;"&gt; skim_variable &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:right;"&gt; n_missing &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:right;"&gt; complete_rate &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:right;"&gt; numeric.mean &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:right;"&gt; numeric.sd &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:right;"&gt; numeric.p0 &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:right;"&gt; numeric.p25 &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:right;"&gt; numeric.p50 &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:right;"&gt; numeric.p75 &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:right;"&gt; numeric.p100 &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;th style="text-align:left;"&gt; numeric.hist &lt;/th&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  &lt;/thead&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;tbody&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; numeric &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; x &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 54.26327 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 16.76514 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 22.3077 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 44.10260 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 53.3333 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 64.74360 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 98.2051 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; ▅▇▇▅▂ &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; numeric &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; y &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 47.83225 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 26.93540 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 2.9487 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 25.28845 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 46.0256 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 68.52568 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:right;"&gt; 99.4872 &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    &lt;td style="text-align:left;"&gt; ▇▇▇▅▆ &lt;/td&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;/tr&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/tbody&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;/table&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |skim_type |skim_variable | n_missing| complete_rate| numeric.mean| numeric.sd| numeric.p0| numeric.p25| numeric.p50| numeric.p75| numeric.p100|numeric.hist |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |:---------|:-------------|---------:|-------------:|------------:|----------:|----------:|-----------:|-----------:|-----------:|------------:|:------------|</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |numeric   |x             |         0|             1|     54.26327|   16.76514|    22.3077|    44.10260|     53.3333|    64.74360|      98.2051|▅▇▇▅▂        |</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |numeric   |y             |         0|             1|     47.83225|   26.93540|     2.9487|    25.28845|     46.0256|    68.52568|      99.4872|▇▇▇▅▆        |</span>
 </code></pre></div>
     </div>
   </div>

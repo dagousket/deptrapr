@@ -88,8 +88,7 @@
 
       
 
-      </header><script src="explore-datasets_files/kePrint-0.0.1/kePrint.js"></script><link href="explore-datasets_files/lightable-0.0.1/lightable.css" rel="stylesheet">
-<div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Explore datasets</h1>
@@ -113,7 +112,7 @@
 y.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fetch_dataset.html">fetch_dataset</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"dino"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading dino dataset</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Loading dino dataset</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="show_data-take-a-quick-look-at-the-dataset">
@@ -121,123 +120,65 @@ y.</p>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fetch_dataset.html">fetch_dataset</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"dino"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading dino dataset</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Loading dino dataset</span></span>
 <span><span class="fu"><a href="../reference/show_data.html">show_data</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, view <span class="op">=</span> <span class="st">"skim"</span><span class="op">)</span></span></code></pre></div>
-<table class="table table table-striped" style="font-size: 7px; ">
-<thead><tr>
-<th style="text-align:left;">
-skim_type
-</th>
-<th style="text-align:left;">
-skim_variable
-</th>
-<th style="text-align:right;">
-n_missing
-</th>
-<th style="text-align:right;">
-complete_rate
-</th>
-<th style="text-align:right;">
-numeric.mean
-</th>
-<th style="text-align:right;">
-numeric.sd
-</th>
-<th style="text-align:right;">
-numeric.p0
-</th>
-<th style="text-align:right;">
-numeric.p25
-</th>
-<th style="text-align:right;">
-numeric.p50
-</th>
-<th style="text-align:right;">
-numeric.p75
-</th>
-<th style="text-align:right;">
-numeric.p100
-</th>
-<th style="text-align:left;">
-numeric.hist
-</th>
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="6%">
+<col width="9%">
+<col width="6%">
+<col width="9%">
+<col width="8%">
+<col width="7%">
+<col width="7%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+<col width="8%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">skim_type</th>
+<th align="left">skim_variable</th>
+<th align="right">n_missing</th>
+<th align="right">complete_rate</th>
+<th align="right">numeric.mean</th>
+<th align="right">numeric.sd</th>
+<th align="right">numeric.p0</th>
+<th align="right">numeric.p25</th>
+<th align="right">numeric.p50</th>
+<th align="right">numeric.p75</th>
+<th align="right">numeric.p100</th>
+<th align="left">numeric.hist</th>
 </tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-x
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-54.26327
-</td>
-<td style="text-align:right;">
-16.76514
-</td>
-<td style="text-align:right;">
-22.3077
-</td>
-<td style="text-align:right;">
-44.10260
-</td>
-<td style="text-align:right;">
-53.3333
-</td>
-<td style="text-align:right;">
-64.74360
-</td>
-<td style="text-align:right;">
-98.2051
-</td>
-<td style="text-align:left;">
-▅▇▇▅▂
-</td>
+<tr class="odd">
+<td align="left">numeric</td>
+<td align="left">x</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">54.26327</td>
+<td align="right">16.76514</td>
+<td align="right">22.3077</td>
+<td align="right">44.10260</td>
+<td align="right">53.3333</td>
+<td align="right">64.74360</td>
+<td align="right">98.2051</td>
+<td align="left">▅▇▇▅▂</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-y
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-47.83225
-</td>
-<td style="text-align:right;">
-26.93540
-</td>
-<td style="text-align:right;">
-2.9487
-</td>
-<td style="text-align:right;">
-25.28845
-</td>
-<td style="text-align:right;">
-46.0256
-</td>
-<td style="text-align:right;">
-68.52568
-</td>
-<td style="text-align:right;">
-99.4872
-</td>
-<td style="text-align:left;">
-▇▇▇▅▆
-</td>
+<tr class="even">
+<td align="left">numeric</td>
+<td align="left">y</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">47.83225</td>
+<td align="right">26.93540</td>
+<td align="right">2.9487</td>
+<td align="right">25.28845</td>
+<td align="right">46.0256</td>
+<td align="right">68.52568</td>
+<td align="right">99.4872</td>
+<td align="left">▇▇▇▅▆</td>
 </tr>
 </tbody>
 </table>

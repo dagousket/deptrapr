@@ -23,7 +23,7 @@ data <- fetch_dataset(type = "dino")
 p <- plot_dataset(data,
                   type = "ggplot",
                   candy = TRUE,
-                  title = "The Candynosaurus Rex")
+                  title = "the candynosaurus rex")
 p
 ```
 

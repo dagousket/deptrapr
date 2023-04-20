@@ -32,8 +32,7 @@ Imports:
     stats,
     stringr,
     tidyr,
-    utils,
-    yesno
+    utils
 Suggests: 
     rmarkdown,
     testthat

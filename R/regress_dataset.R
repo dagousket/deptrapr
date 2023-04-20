@@ -3,25 +3,25 @@
 #' regress_dataset
 #' 
 #' @param data data.frame The dataset to perform regression on, must have "x" and "y" numerical column
-#' @param view_type character The type of output to view result, can be "sjTable" or "kable"
-#' @param save_output logical Save the linear regression output to file
+#' @param view_type character The type of output to view result, can be "sjTable", "DT" or "kable"
 #' @param path character Path to the saved output file
 #' 
 #' @importFrom stats lm
 #' @importFrom sjPlot tab_model
 #' @importFrom DT datatable
 #' @importFrom knitr kable
-#' @importFrom kableExtra kable_styling
 #' @importFrom broom tidy
 #' @importFrom readr write_rds
+#' @importFrom glue glue
+#' @importFrom yesno yesno
 #'
 #' @return table The summarised regression info
 #' @export
 #' @examples
 #' data <- fetch_dataset(type = "dino")
-#' reg <- regress_dataset(data = data, view_type = "sjTable", save_output = FALSE)
+#' reg <- regress_dataset(data = data, view_type = "sjTable")
 #' reg
-regress_dataset <- function(data, view_type = c("sjTable","kableExtra","DT"), save_output = TRUE, path = "lm_params.rds") {
+regress_dataset <- function(data, view_type = c("sjTable","kable","DT"), path = "lm_params.rds") {
   
   view_type = match.arg(view_type)
   
@@ -29,15 +29,19 @@ regress_dataset <- function(data, view_type = c("sjTable","kableExtra","DT"), sa
   reg <- lm(data = data)
 
   # save
-  if (isTRUE(save_output)) {
-    write_rds(x = tidy(reg), file = path)
+  if (isTRUE(interactive())) {
+    user_answer <- yesno("Do you want the regression results to be saved ?")
+    if (isTRUE(user_answer)) {
+      message(glue("Saving output in {path}"))
+      write_rds(x = tidy(reg), file = path)
+    }
   }
-
+  
   # show
   if (view_type == "DT") {
     reg <- reg %>% tidy() %>% datatable()
-  } else if (view_type == "kableExtra") {
-    reg <- reg %>% tidy() %>% kable() %>% kable_styling("striped", position = "left", font_size = 7)
+  } else if (view_type == "kable") {
+    reg <- reg %>% tidy() %>% kable()
   } else if (view_type == "sjTable") {
     reg <- reg %>% tab_model()
   }

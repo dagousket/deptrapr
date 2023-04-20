@@ -26,8 +26,8 @@ library(deptrapr)
 data <- fetch_dataset(type = "dino")
 p <- plot_dataset(data,
                   type = "ggplot",
-                  smarties = TRUE,
-                  title = "My smarties dino")
+                  candy = TRUE,
+                  title = "A candynosaurus")
 p
 ```
 

@@ -19,11 +19,11 @@ color :
 ``` r
 library(deptrapr)
 data <- fetch_dataset(type = "dino")
-#> Loading dino dataset
+#> ✔ Loading dino dataset
 p <- plot_dataset(data,
                   type = "ggplot",
-                  smarties = TRUE,
-                  title = "My smarties dino")
+                  candy = TRUE,
+                  title = "The Candynosaurus Rex")
 p
 ```
 

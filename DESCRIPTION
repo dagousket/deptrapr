@@ -13,24 +13,27 @@ URL: https://github.com/dagousket/deptrapr
 BugReports: https://github.com/dagousket/deptrapr/issues
 Imports: 
     broom,
+    cli,
     datasauRus,
     dplyr,
     DT,
     ggplot2,
     ggthemes,
     glue,
-    kableExtra,
     knitr,
     magrittr,
     palmerpenguins,
     plotly,
+    png,
     readr,
     RSkittleBrewer (>= 1.1),
     sjPlot,
     skimr,
     stats,
+    stringr,
     tidyr,
-    utils
+    utils,
+    yesno
 Suggests: 
     rmarkdown,
     testthat

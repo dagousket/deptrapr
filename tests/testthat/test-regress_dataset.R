@@ -2,11 +2,10 @@
 
 test_that("regress_dataset works", {
   data <- fetch_dataset(type = "dino")
-  tmp_out <- paste0(tempfile(pattern = "lm"), ".rds")
   
-  reg_dt <- regress_dataset(data = data, view_type = "DT", save_output = FALSE)
-  reg_sj <- regress_dataset(data = data, view_type = "sjTable", save_output = FALSE)
-  reg_kb <- regress_dataset(data = data, view_type = "kableExtra", save_output = TRUE, path = tmp_out)
+  reg_dt <- regress_dataset(data = data, view_type = "DT")
+  reg_sj <- regress_dataset(data = data, view_type = "sjTable")
+  reg_kb <- regress_dataset(data = data, view_type = "kable")
   
   expect_s3_class(object = reg_dt,
                   class = c("datatables", "htmlwidget")
@@ -17,9 +16,7 @@ test_that("regress_dataset works", {
                   )
   
   expect_s3_class(object = reg_kb,
-                  class = c("kableExtra", "knitr_kable")
+                  class = c("knitr_kable")
                   )
-  
-  expect_true(file.exists(tmp_out))
-  unlink(tmp_out)
+
 })

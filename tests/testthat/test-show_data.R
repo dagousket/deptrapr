@@ -4,6 +4,6 @@ test_that("show_data works", {
   data <- fetch_dataset(type = "dino")
   output <- show_data(data = data, view = "skim")
   expect_s3_class(object = output,
-                  class = c("kableExtra", "knitr_kable")
+                  class = c("knitr_kable")
                   )
 })

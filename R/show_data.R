@@ -6,7 +6,6 @@
 #' @param view_type character Type of view, show the first rows with "head" or global summary with "skim"
 #' 
 #' @importFrom knitr kable
-#' @importFrom kableExtra kable_styling
 #' @importFrom skimr skim
 #' @importFrom utils head
 #' 
@@ -21,9 +20,9 @@ show_data <- function(data, view_type = c("head", "skim")){
   view_type = match.arg(view_type)
   
   if (view_type == "head"){
-    selected_view <- data %>% head() %>% kable() %>% kable_styling("striped", position = "left", font_size = 7)
+    selected_view <- data %>% head() %>% kable()
   } else if (view_type == "skim"){
-    selected_view <- skim(data) %>% kable() %>% kable_styling("striped", position = "left", font_size = 7)
+    selected_view <- skim(data) %>% kable()
   }
   
   return(selected_view)

@@ -10,6 +10,7 @@
 #' @importFrom purrr walk
 #' @importFrom ggplot2 ggsave
 #' @importFrom glue glue
+#' @importFrom svglite svglite
 #'
 #' @return None Create output files
 #' 

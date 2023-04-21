@@ -25,6 +25,7 @@ Imports:
     palmerpenguins,
     plotly,
     png,
+    purrr,
     readr,
     RSkittleBrewer (>= 1.1),
     sjPlot,

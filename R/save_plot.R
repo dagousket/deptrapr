@@ -10,7 +10,6 @@
 #' @importFrom purrr walk
 #' @importFrom ggplot2 ggsave
 #' @importFrom glue glue
-#' @importFrom svglite svglite
 #'
 #' @return None Create output files
 #' 
@@ -43,6 +42,11 @@ save_plot <- function(
     ){
     
   ext <- match.arg(ext, several.ok = TRUE)
+  
+  # check svglite is installed
+  if (! requireNamespace("svglite", quietly = TRUE)) {
+    stop("To enable svg export with ggsave(), please install svglite : install.packages('svglite')")
+  }
   
   # save all format
   ext %>% walk(

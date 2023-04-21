@@ -103,6 +103,95 @@ test_that("plot_dataset works", {
   })
 ```
 
+# `save_plot()` : save graphic in multiple chosen formats
+    
+```{r function-save_plot}
+#' save_plot
+#' 
+#' @param plot ggplot A ggplot object to be saved
+#' @param ext character A vector of output format, can be multiple of "png", "svg", "jpeg", "pdf"
+#' @param path character A path where to save the output
+#' @param filename character The filename for the output, extension will be added
+#' 
+#' @importFrom purrr walk
+#' @importFrom ggplot2 ggsave
+#' @importFrom glue glue
+#'
+#' @return None Create output files
+#' 
+#' @export
+save_plot <- function(
+    plot,
+    ext = c("png", "svg", "jpeg", "pdf"),
+    path = "graph_output",
+    filename = "output"
+    ){
+    
+  ext <- match.arg(ext, several.ok = TRUE)
+  
+  # save all format
+  ext %>% walk(
+    \(x) ggsave(
+      filename = file.path(path, glue("{filename}.{x}")),
+      plot = plot,
+      device = x)
+    )
+}
+```
+  
+```{r example-save_plot}
+# create temp dir
+tmp_path <- tempfile(pattern = "saveplot")
+dir.create(tmp_path)
+ext <- c("svg","pdf")
+
+data <- fetch_dataset(type = "dino")
+p <- plot_dataset(data,
+                  type = "ggplot",
+                  candy = TRUE,
+                  title = "the candynosaurus rex")
+
+save_plot(plot = p,
+          filename = "dino",
+          ext = ext,
+          path = tmp_path
+)
+
+# clean
+unlink(tmp_path, recursive = TRUE)
+```
+  
+```{r tests-save_plot}
+test_that("save_plot works", {
+  
+  tmp_path <- tempfile(pattern = "saveplot")
+  dir.create(tmp_path)
+  ext <- c("png", "jpeg", "svg")
+  
+  data <- fetch_dataset(type = "dino")
+  p <- plot_dataset(data,
+                    type = "ggplot",
+                    candy = TRUE,
+                    title = "the candynosaurus rex")
+  
+  save_plot(plot = p,
+            filename = "dino",
+            ext = ext,
+            path = tmp_path
+            )
+  
+  # test files are created
+  expected_files <- file.path(tmp_path, glue::glue("dino.{ext}"))
+  expect_true(all(file.exists(expected_files)))
+  
+  # clean
+  unlink(tmp_path, recursive = TRUE)
+  
+})
+
+```
+  
+
 ```{r development-inflate, eval=FALSE}
 # Run but keep eval=FALSE to avoid infinite loop
 # Execute in the console directly

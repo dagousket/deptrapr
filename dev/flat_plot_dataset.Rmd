@@ -171,7 +171,7 @@ test_that("save_plot works", {
   
   tmp_path <- tempfile(pattern = "saveplot")
   dir.create(tmp_path)
-  ext <- c("png", "jpeg")
+  ext <- c("png", "jpeg", "svg")
   
   data <- fetch_dataset(type = "dino")
   p <- plot_dataset(data,

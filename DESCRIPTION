@@ -25,12 +25,14 @@ Imports:
     palmerpenguins,
     plotly,
     png,
+    purrr,
     readr,
     RSkittleBrewer (>= 1.1),
     sjPlot,
     skimr,
     stats,
     stringr,
+    svglite,
     tidyr,
     utils
 Suggests: 

@@ -131,7 +131,7 @@ save_plot <- function(
   
   # check svglite is installed
   if (!requireNamespace("svglite", quietly = TRUE)) {
-    message(
+    warning(
       "Skipping SVG export. To enable svg export with ggsave(), please install svglite : install.packages('svglite')"
     )
     ext <- ext[ext != "svg"]

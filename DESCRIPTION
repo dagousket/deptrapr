@@ -36,7 +36,6 @@ Imports:
     utils
 Suggests: 
     rmarkdown,
-    svglite,
     testthat
 VignetteBuilder: 
     knitr

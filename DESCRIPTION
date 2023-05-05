@@ -32,11 +32,11 @@ Imports:
     skimr,
     stats,
     stringr,
-    svglite,
     tidyr,
     utils
 Suggests: 
     rmarkdown,
+    svglite,
     testthat
 VignetteBuilder: 
     knitr

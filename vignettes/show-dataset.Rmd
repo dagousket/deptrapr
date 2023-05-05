@@ -31,3 +31,36 @@ p <- plot_dataset(data,
 p
 ```
 
+# `save_plot()` : save graphic in multiple chosen formats
+
+    
+
+  
+
+```{r example-save_plot}
+# create temp dir
+tmp_path <- tempfile(pattern = "saveplot")
+dir.create(tmp_path)
+ext <- c("svg","pdf")
+
+data <- fetch_dataset(type = "dino")
+p <- plot_dataset(data,
+                  type = "ggplot",
+                  candy = TRUE,
+                  title = "the candynosaurus rex")
+
+save_plot(plot = p,
+          filename = "dino",
+          ext = ext,
+          path = tmp_path
+)
+
+# clean
+unlink(tmp_path, recursive = TRUE)
+```
+
+  
+
+  
+
+

@@ -25,6 +25,7 @@ Imports:
     palmerpenguins,
     plotly,
     png,
+    purrr,
     readr,
     RSkittleBrewer (>= 1.1),
     sjPlot,
@@ -35,6 +36,7 @@ Imports:
     utils
 Suggests: 
     rmarkdown,
+    svglite,
     testthat
 VignetteBuilder: 
     knitr

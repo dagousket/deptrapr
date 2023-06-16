@@ -8,15 +8,45 @@ flat_explore_dataset.Rmd:
   - tests/testthat/test-fetch_dataset.R
   - tests/testthat/test-show_data.R
   vignettes: vignettes/explore-datasets.Rmd
+  inflate:
+    flat_file: dev/flat_explore_dataset.Rmd
+    vignette_name: Explore datasets
+    open_vignette: true
+    check: false
+    document: true
+    overwrite: ask
 flat_plot_dataset.Rmd:
   path: dev/flat_plot_dataset.Rmd
   state: active
   R: R/plot_dataset.R
   tests: tests/testthat/test-plot_dataset.R
   vignettes: vignettes/show-dataset.Rmd
+  inflate:
+    flat_file: dev/flat_plot_dataset.Rmd
+    vignette_name: Show dataset
+    open_vignette: true
+    check: false
+    document: true
+    overwrite: ask
 flat_regress_dataset.Rmd:
   path: dev/flat_regress_dataset.Rmd
   state: active
   R: R/regress_dataset.R
   tests: tests/testthat/test-regress_dataset.R
   vignettes: vignettes/regress-dataset.Rmd
+  inflate:
+    flat_file: dev/flat_regress_dataset.Rmd
+    vignette_name: Regress dataset
+    open_vignette: true
+    check: false
+    document: true
+    overwrite: ask
+keep:
+  path: keep
+  state: active
+  R:
+  - R/deptrapr-package.R
+  - R/globals.R
+  - R/utils-pipe.R
+  tests: []
+  vignettes: []

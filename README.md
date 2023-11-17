@@ -11,6 +11,15 @@
 The goal of `{deptrapr}` is to show how managing package dependencies
 may lead to CI failures.
 
+## Installation
+
+To install `{deptrapr}` with all its dependencies (incl. suggests), use
+the following command :
+
+``` r
+remotes::install_github(repo = "dagousket/deptrapr", dependencies = TRUE)
+```
+
 ## Example
 
 This is a basic example which shows you how to plot a dino in smarties
